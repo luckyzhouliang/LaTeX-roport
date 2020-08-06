@@ -1,0 +1,33 @@
+\chapter{再入可达域分析}
+
+飞船再入环境严苛，整个再入段受热流、过载、动压等约束的影响。应急条件下，飞船为到达目标着陆场，再入轨迹存在
+不同的轨迹形式。本章研究飞船再入机动可达域的快速确定问题，利用伪谱方法完成不同再入轨迹形式下的可达域确定。
+通过容许不同的轨迹形式，扩展再入点的范围，为应急返回提供更大的窗口。
+
+\section{伪谱法设计再入轨迹}
+
+考虑地球自转，圆球假设下，忽略地球扁率和侧滑角等的影响，在半速度系下建立运动方程，飞船无动力再入动力学方程满足
+\begin{equation}
+	\left\{
+	\begin{aligned}
+		\frac{\dif r}{\dif t}=       & v \sin \theta                                                           \\
+		\frac{\dif \lambda}{\dif t}= & \frac{v \cos \theta \sin \psi}
+		{r \cos \phi}                                                                                          \\
+		\frac{\dif \phi}{\dif t}=    & \frac{v \cos \theta \cos \psi}{r}                                       \\
+		\frac{\dif v}{\dif t}=       & -D-g \sin \theta +\omega_e^2r\cos\phi \sin\theta \cos\phi-
+		\omega_e^2r\cos\phi\cos\theta\sin\phi\cos\sigma                                                        \\
+		\frac{\dif\theta}{\dif t} =  & \frac{L\cos\sigma}{v}+(\frac{v}{r}-
+		\frac{g}{v})\cos\theta+2\omega_e\cos\phi\sin\sigma                                                     \\
+		                             & {}+\frac{\omega_e^2r\cos\phi\cos\theta\cos\phi}{v}                      \\
+		\frac{\dif\psi}{\dif t} =    & \frac{L\sin\sigma}{v\cos\theta}+\frac{v\sin \psi\cos \theta\tan\phi}{r}
+		-2\omega_e(\cos\phi\tan\theta\cos\sigma-\sin\phi)                                                      \\
+		                             & {}+\frac{\omega_e^2r}{\cos\theta}sin\phi\cos\phi\sin\sigma
+	\end{aligned}
+	\right.
+\end{equation}
+式中，包括六个状态量，地心距$r$，经纬度$\lambda$，$\phi$，速度$v$，速度倾角$\theta$，以及航向角$\psi$，
+控制量$\sigma$，$L$，$D$为再入过程中的升力阻力加速度。满足
+\begin{align}
+	L & =\frac{C_L\rho v^2S}{2m} \\
+	D & =\frac{C_D\rho v^2S}{2m}
+\end{align}
