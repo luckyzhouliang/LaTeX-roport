@@ -101,26 +101,24 @@
 		\end{itemize}
 	\end{block}
 \end{frame}
+\section{初步设计结果}
 \begin{frame}{初步设计结果}
 	\begin{block}{结果对比}
-		仿真条件设置和沈论文保持一致
-
+		仿真条件设置和沈论文保持一致，优化结果因为采用的遗传算法，每次优化得到的目标函数存在一定的差别。
 		
+		以燃料消耗为例，所需速度在$800-920m/s$之间变动，速度上限$850m/s$，变化范围较大，且由可能存在找不到可行解的情况。
+		
+		需要进一步排查，目前是遗传算法提供初值，sqp进一步优化的方法。		
 	\end{block}
-	气动系数的插值，导致伪谱程序求解慢，效率差10倍左右\\
-	能否采用拟合的方式\\
 	
-	\includegraphics[height=.4\textheight]{Ma_Cl.png}
-	\includegraphics[height=.4\textheight]{Ma_Cd.png}
-
 \end{frame}
-
+\section{工作计划}
 \begin{frame}{工作计划}
-	\begin{block}{}
+	\begin{block}{下一步内容}
 		\begin{enumerate}
-			\item 明确采用什么模型进行空间轨道设计与再入轨道设计，（双二体模型或者考虑摄动的精确模型）
-			\item 确定再入瞄准点的选择方法（是否考虑其中的黄金再入走廊等方式）
-			\item 完成再入可达域的绘图分析部分
+			\item 考虑摄动的精确模型，精确轨道设计
+			\item 完成绘图分析部分
+			\item 继续攥写大论文
 		\end{enumerate}
 	\end{block}
 \end{frame}
