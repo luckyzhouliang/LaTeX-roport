@@ -2,6 +2,14 @@
 % 这里添加你的论文中专门使用的宏包
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 \newcommand{\degree}{^\circ}
+% \setlist[enumerate]{}
+% \setlist[enumerate]{}
+\setlist[enumerate]{%
+label=(\arabic*),itemsep=0pt,listparindent=\parindent,%
+leftmargin=0pt,itemindent=\parindent,%
+partopsep=0pt,parsep=\parskip,topsep=5pt%
+}
+% \setlength{\listparindent}{2em}
 % 原先preamble中的\usepackage{...}用\RequirePackage{...}代替
 
 % 算法以及列表环境

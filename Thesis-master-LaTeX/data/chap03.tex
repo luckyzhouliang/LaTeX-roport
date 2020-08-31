@@ -1,12 +1,13 @@
-\chapter{再入可达域分析}
+\chapter{基于hp自适应伪谱法的再入轨迹设计与分析}
 
 飞船再入环境严苛，整个再入段受热流、过载、动压等约束的影响。应急条件下，飞船为到达目标着陆场，再入轨迹存在
 不同的轨迹形式。本章研究飞船再入机动可达域的快速确定问题，利用伪谱方法完成不同再入轨迹形式下的可达域确定。
 通过容许不同的轨迹形式，扩展再入点的范围，为应急返回提供更大的窗口。
 
-\section{再入可达域问题建模}
-
-考虑地球自转，圆球假设下，忽略地球扁率和侧滑角等的影响，在半速度系下建立运动方程，飞船无动力再入动力学方程满足
+\section{再入返回轨迹设计问题建模}
+\subsection{再入动力学方程}
+在探月飞船再入返回轨迹设计问题中，采用三自由度运动模型，采用“瞬时平衡假设”，认为返回器始终以配平攻角飞行，且侧滑角为零。
+考虑地球自转，圆球假设下，忽略地球扁率和侧滑角等的影响，在半速度系下建立运动方程，以时间为自变量的飞船无动力再入动力学方程满足
 \begin{equation}
 	\left\{
 	\begin{aligned}
@@ -25,15 +26,91 @@
 	\end{aligned}
 	\right.
 \end{equation}
-式中，包括六个状态量，地心距$r$，经纬度$\lambda$，$\phi$，速度$v$，速度倾角$\theta$，以及航向角$\psi$，
-控制量$\sigma$，$L$，$D$为再入过程中的升力阻力加速度。满足
+其中，$r$为地心距，$\lambda$和$\phi$为经纬度，$v$为相对地球速度，$\theta$为当地速度倾角，表征速度与当地水平的夹角，
+以及$\psi$为速度方位角，表征速度在当地水平面内的投影与当地正北方向的夹角，顺时针为正；% 表述可能错误
+$\sigma$为控制量倾侧角，反映了升力对铅锤面的倾斜；$ \omega_e $为地球自转角速度，$L$，$D$为再入过程中的升力阻力加速度，满足
 \begin{align}
 	L & =\frac{C_L\rho v^2S}{2m} \\
 	D & =\frac{C_D\rho v^2S}{2m}
 \end{align}
+其中:$ C_L $和$ C_D $为气动升力系数和气动阻力系数，$ \rho $为大气密度，$ m $为飞行器质量，$ S $为飞船的参考面积。
 
-\section{基于hp自适应伪谱的可达域求解策略}
+大气密度$ \rho $可采用指数模型、多阶段拟合公式和美国US1976标准大气模型等，考虑到精度和计算速度的要求，最终
+采用多阶段的拟合公式，更多可参考\upcite{贾沛然-1993-远程火箭弹道学}。
+\begin{equation}
+	\rho=\rho_0 e^{-\beta h}
+\end{equation}
 
-\section{仿真分析}
+\subsection{约束分析}
+因探月返回器高速再入的特点，过载和热流等约束十分苛刻。为了保证再入过程的安全，根据约束的性质划分为两类:过程约束和终端约束。
+\subsubsection{过程约束}
+\begin{enumerate}
+	\item 热流约束\par
+	      高超声速气动加热对热防护系统（TPS）的影响,为避免飞行器被烧毁，因此需对飞行器再入过程中的热流密度进行限制。
+	      通常采用驻点热流密度作为约束指标，计算公式如下：
+	      \begin{equation}
+		      \dot{Q} = k_s\left(\frac{\rho}{\rho_{0}}\right)^{0.5}\left(\frac{v}{V_{c}}\right)^{m}
+	      \end{equation}
+	      其中，$ k_s $为热流相关常数，$ V_c=7.9\mathrm{km/s} $为参考的第一宇宙速度，$ m $可取3或3.15，本文中取3.15
+	\item 过载约束\par
+	      考虑到内部结构、材料的限制，需要对过载进行限制，要求瞬时过载小于最大允许过载，即
+	      \begin{equation}
+		      n=\sqrt{{{L}^{2}}+{{D}^{2}}}\le {{n}_{\max }}
+	      \end{equation}
+	      其中，$ n_{\max} $为最大允许过载值。
+	\item 动压约束\par
+	      动压对控制系统的影响和侧向稳定性的要求，
+	      \begin{equation}
+		      q=\frac{1}{2} \rho V^{2} \leq q_{\max }
+	      \end{equation}
+	\item 跃起高度约束\par
+	      此外，为防止跳出高度过高导致任务失败，路径约束还应包括一个高度约束。这里设定最大高度不超过300km，
+	      \begin{equation}
+		      h<h_{\max}
+	      \end{equation}
+	\item 控制量约束\par
+	      控制量倾侧角受限于执行机构，飞船的控制能力有限，实际倾侧角机动不可能瞬时完成，需要对倾侧角和倾侧角变化
+	      速率进行限幅，即
+	      \begin{equation}
+		      \left\{
+		      \begin{aligned}
+			      \abs{\sigma}       & \leq \sigma_{\max}       \\
+			      \abs{\dot{\sigma}} & \leq \dot{\sigma}_{\max} \\
+		      \end{aligned} \right.
+	      \end{equation}
+\end{enumerate}
+
+\subsubsection{终端约束}
+对于再入问题中的终端约束，包含起始点和终点的状态约束。起始点处的状态在分析中通常为给定值，在初始时刻$ t_0 $状态满足
+\begin{equation}
+	\left\{ \begin{aligned}
+		h(t_0)=h_0,\lambda(t_0)=\lambda_0,\phi(t_0)=\phi_0 \\
+		v(t_0)=v_0,\theta(t_0)=\theta_0,\psi(t_0)=\psi_0
+	\end{aligned} \right.
+\end{equation}
+
+终点处根据研究问题可分为固定终点和自由终点两种情况，数学上表达为：
+\begin{enumerate}
+	\item 固定终点的约束条件\par
+	      终点处位置固定，但速度和速度倾角存在范围约束，即：
+	      \begin{equation}
+		      \left\{ \begin{aligned}
+				  h(t_f)&=h_{f}, \lambda(t_f)=\lambda_{f}, \phi(t_f)=\phi_{f} \\
+				  v &\geq v_{f}, \theta_{\min } \leq \theta \leq \theta_{\max }
+		      \end{aligned}\right.
+	      \end{equation}
+	\item 自由终点的约束条件\par
+	对于求解可达域等问题时，终点不固定，通常约束设置为：
+	\begin{equation}
+		h(t_f)=h_{f}, v \geq v_{f}, \theta_{\min } \leq \theta \leq \theta_{\max }
+	\end{equation}
+\end{enumerate}
+
+\section{hp自适应伪谱法的求解策略}
+hp自适应伪谱法是伪谱方法的一种，求解再入问题在计算速度有较大优势。hp自适应伪谱法主要包含两部分内容：伪谱化离散和hp自适应网格细化
+
+
+\section{伪谱法快速可达域计算与分析}
+\section{短航程再入轨迹设计结果对比}
 
 \subsection{}
