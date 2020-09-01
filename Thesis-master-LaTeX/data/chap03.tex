@@ -107,7 +107,100 @@ $\sigma$为控制量倾侧角，反映了升力对铅锤面的倾斜；$ \omega_
 \end{enumerate}
 
 \section{hp自适应伪谱法的求解策略}
-hp自适应伪谱法是伪谱方法的一种，求解再入问题在计算速度有较大优势。hp自适应伪谱法主要包含两部分内容：伪谱化离散和hp自适应网格细化
+hp自适应伪谱法是伪谱方法的一种，求解再入问题在计算速度有较大优势。hp自适应伪谱法主要包含两部分内容：
+伪谱化离散和hp自适应网格细化。
+\subsection{LGR离散化方法}
+%在绪论中介绍轨迹优化问题描述
+首先将在连续时间$ [t_0,t_f] $上的问题划分为$ K $个子区间，记第$ k $个子区间为$ [t_{k-1},t_k] $，有$ t_0<t_1<t_2<\ldots<t_k $。对于
+第k个子区间，首先需要将时域$ t\in[t_{k-1},t_k] $，转换到$ \tau \in [-1,1] $，即：
+\begin{equation}
+	\tau = \frac{2 t-\left(t_{k-1}+t_{k}\right)}{t_{k}-t_{k-1}}
+\end{equation}
+
+经过区间划分后，$ [t_0,t_f] $时间内的连续优化问题可以表述为:
+\begin{enumerate}
+	\item 动力学方程
+	\begin{equation}
+		\frac{\dif \boldsymbol{x}^{(k)}(\tau)}{\dif \tau}=\frac{t_{k}-t_{k-1}}{2} f\left(\boldsymbol{x}^{(k)}(\tau), \boldsymbol{u}^{(k)}(\tau)\right), \quad(k=1, \cdots, K)
+	\end{equation}
+	\item 目标函数
+	\begin{equation}
+		J=\Phi\left(\boldsymbol{x}^{(1)}(-1), t_{0}, \boldsymbol{x}^{(K)}(+1), t_{K}\right)+\sum_{k=1}^{K} \frac{t_{k}-t_{k-1}}{2} \int_{t_{0}}^{t_{f}} g\left(\boldsymbol{x}^{(k)}(\tau), \boldsymbol{u}^{(k)}(\tau)\right) d \tau
+	\end{equation}
+	\item 路径约束
+	\begin{equation}
+		\frac{t_{k}-t_{k-1}}{2} \boldsymbol{C}\left(\boldsymbol{x}^{(k)}(\tau), \boldsymbol{u}^{(k)}(\tau)\right) \leq 0 \quad(k=1, \cdots, K)
+	\end{equation}
+	\item 边界条件
+	\begin{equation}
+		\phi\left(\boldsymbol{x}^{(1)}(-1), t_{0}, \boldsymbol{x}^{(K)}(+1), t_{K}\right)=0
+	\end{equation}
+\end{enumerate}
+
+引入区间划分后，附加产生额外的内点约束：
+\begin{equation}
+	\phi\left(\boldsymbol{x}^{(1)}(-1), t_{0}, \boldsymbol{x}^{(K)}(+1), t_{K}\right)=0
+\end{equation}
+
+进一步，需要对问题进行离散化求解。Radau伪谱法的配点为Legendre-Gauss-Radau（LGR）点，LGR点相对于原点是不对称的，并且不是唯一的，
+可以使用初始点或终点来定义它们。一般的LGR点配置在 $ [t_{k-1},t_k) $上（包含起点），将其归一化后，即端点$ \tau_{N_k+1}^{(k)}=+1 $为非配点。区间内的离散点为$ -1=\tau_1<\tau_2<\cdots<\tau_{N_k}<\tau_{N_k+1} $，此处省略上标$ k $。
+对于任意一个子区间$  [t_{k-1},t_k] $，取$ N_k $个LGR点，取插值点为$ N_k $个LGR点与终端点$ \tau_{N_k+1}^{(k)}=+1 $，状态量的近似可以表示为：
+\begin{equation}
+	\boldsymbol{x}^{(k)}(\tau) \approx \boldsymbol{X}^{(k)}(\tau)=\sum_{j=1}^{N_{k}+1} \boldsymbol{X}_{j}^{(k)} L_{j}^{(k)}(\tau)
+	\label{eq:state}
+\end{equation}
+其中，简记$ \boldsymbol{X}_{j}^{(k)}=\boldsymbol{X}^{(k)}\left(\tau_{j}^{(k)}\right)$，$ \quad L_{j}^{(k)}(\tau) $为Lagrange插值
+基函数：
+\begin{equation}
+	L_{j}^{(k)}(\tau)=\prod_{i=1, i \neq j}^{N_{k}+1} \frac{\tau-\tau_{i}^{(k)}}{\tau_{j}^{(k)}-\tau_{i}^{(k)}}
+\end{equation}
+
+获得状态量的近似后，进一步对于动力学方程的状态导数可以近似为：
+\begin{equation}
+	\frac{\dif \boldsymbol{x}^{(k)}(\tau)}{\dif \tau} \approx \frac{\dif \boldsymbol{X}^{(k)}(\tau)}{\dif \tau}=\sum_{j=1}^{N_{k}+1} \boldsymbol{X}_{j}^{(k)} \dot{L}_{j}^{(k)}(\tau)
+\end{equation}
+
+状态量的近似通过在$ N_k+1 $个插值点处的Lagrange插值多项式近似，对于控制量通过在$ N_k $个配点处插值获得，有：
+\begin{equation}
+	\boldsymbol{u}^{(k)}(\tau) \approx \boldsymbol{U}^{(k)}(\tau)=\sum_{i=1}^{N_{k}} \boldsymbol{U}_{i}^{(k)}\widetilde{L}_{i}^{(k)}(\tau)
+	\label{eq:control}
+\end{equation}
+其中$ \widetilde{L}_{i}^{(k)}(\tau) $与$ L_{j}^{(k)}(\tau) $具有类似的形式，此处不再列出。
+
+经过\eqref{eq:state}-\eqref{eq:control}的处理，连续时间上的原最优控制问题可转化为其离散形式：
+\begin{enumerate}
+	\item 动力学方程\par
+	在配点处，原动力学微分方程约束转换为代数约束形式，表达为：
+	\begin{equation}
+		\sum_{j=1}^{N_{k}+1} \boldsymbol{X}_{j}^{(k)} D_{i j}^{(k)}-\frac{t_{k}-t_{k-1}}{2} \boldsymbol{f}_{i}^{(k)}=0, \quad\left(i=1, \cdots, N_{k}, k=1, \cdots, K\right)
+	\end{equation}
+	其中，$\boldsymbol{f}_{i}^{(k)}=\boldsymbol{f}\left(\boldsymbol{X}_{i}^{(k)}, \boldsymbol{U}_{i}^{(k)}\right)$，简记$ \boldsymbol{U}_{i}^{(k)}=\boldsymbol{U}^{(k)}\left(\tau_{i}^{(k)}\right)$，式中：
+	\begin{equation}
+		D_{i j}^{(k)}=\dot{L}_{j}^{(k)}\left(\tau_{i}^{(k)}\right) \quad\left(i=1, \cdots, N_{k}, j=1, \cdots, N_{k}+1\right)
+	\end{equation}
+	$ \left\{D_{i j}^{(k)}\right\} $为区间$ k $内大小$ N_k\times (N_k+1) $的微分矩阵，通常可以利用差分近似。
+	\item 目标函数\par
+	目标函数转化为
+	\begin{equation}
+		J=\Phi\left(\boldsymbol{X}^{(1)}(-1), t_{0}, \boldsymbol{X}_{N_{K}+1}^{(K)}, t_{K}\right)+\sum_{k=1}^{K} \sum_{j=1}^{N_{K}} \frac{t_{k}-t_{k-1}}{2} w_{j}^{(k)} g_{j}^{(k)}
+	\end{equation}
+	其中，$w_{j}^{(k)}=\int_{-1}^{1} L_{j}^{(k)}(\tau) d \tau$为第k个子区间上的Legendre-Gauss权重，$g_{j}^{(k)}=g\left(\boldsymbol{X}_{j}^{(k)}, \boldsymbol{U}_{j}^{(k)}\right)$。
+	\item 路径约束\par
+	\begin{equation}
+		\frac{t_{k}-t_{k-1}}{2} \boldsymbol{C}^{(k)}\left(\boldsymbol{X}_{i}^{(k)}, \boldsymbol{U}_{i}^{(k)}\right) \leq 0 \quad\left(i=1, \cdots, N_{k}, k=1, \cdots, K\right)
+	\end{equation}
+	\item 边界条件\par
+	\begin{equation}\phi\left(\boldsymbol{X}^{(1)}(-1), t_{0}, \boldsymbol{X}_{N_{K}+1}^{(K)}, t_{K}\right)=0\end{equation}
+	同时离散化引入的附加内点约束变为：
+	\begin{equation}
+		\boldsymbol{X}_{N_{k}+1}^{(k)}=\boldsymbol{X}_{1}^{(k+1)}, \quad(k=1, \ldots, K-1)
+	\end{equation}
+\end{enumerate}
+
+文献【19】从近似精度和计算效率等方面对上述三种伪谱法进行了比较。 Radau伪谱法和Gauss伪谱法在状态变量、控制变量
+和共轭变量的近似精度上均优于 Legendre伪谱法，同时， Gauss伪谱法对共轭变量边界值的估计精度高于Radau伪谱法，
+且在处理含初始和终端约束的问题上具有优势。在计算效率方面，求解相同规模问题时三种方法耗时差别不大。
+\subsection{hp自适应网格细化方法}
 
 
 \section{伪谱法快速可达域计算与分析}
