@@ -263,13 +263,13 @@ $ \bm{\beta} $为尺度变换后的在检验点处的偏差向量，代替$ \bol
 下面讨论在上述策略下如何增加阶次和网格划分的具体策略。定义$ \varepsilon $为设定的误差阈值，当式\eqref{eq:residual func}的最大值大于$ \varepsilon $，认为需要对该区间进行划分或者增加插值多项式阶次。设定一个阈值$ \eta$衡量向量$ \bm{\beta} $中的元素大小，可以认为：
 \begin{enumerate}
 	\item 增加插值阶次\par
-	当向量$ \bm{\beta} $中的所有元素都小于设定的阈值$ \eta $时，动力学约束的误差认为来自插值多项式，因此增加插值多项式阶次，表示为：
-	\begin{equation}
-		N^{(n+1)}_k=N^{(n)}_k+L
-	\end{equation}
-	其中，$ N^{(n)}_k $表示第$ n $次迭代中，区间$ k $的配点个数，$ L $为设定的增加配点个数。
+	      当向量$ \bm{\beta} $中的所有元素都小于设定的阈值$ \eta $时，动力学约束的误差认为来自插值多项式，因此增加插值多项式阶次，表示为：
+	      \begin{equation}
+		      N^{(n+1)}_k=N^{(n)}_k+L
+	      \end{equation}
+	      其中，$ N^{(n)}_k $表示第$ n $次迭代中，区间$ k $的配点个数，$ L $为设定的增加配点个数。
 	\item 细化区间\par
-	当向量$ \bm{\beta} $中的存在一些点处的值大于设定的阈值$ \eta $时，将超出阈值的点设为新的分段点，另外对于存在图\ref{fig:hp-sketch}这一类邻近点均超过阈值的情况，仅将其中最大值对应的点设为新的分段点。
+	      当向量$ \bm{\beta} $中的存在一些点处的值大于设定的阈值$ \eta $时，将超出阈值的点设为新的分段点，另外对于存在图\ref{fig:hp-sketch}这一类邻近点均超过阈值的情况，仅将其中最大值对应的点设为新的分段点。
 \end{enumerate}
 \begin{figure}[htb]
 	\begin{small}
@@ -280,10 +280,30 @@ $ \bm{\beta} $为尺度变换后的在检验点处的偏差向量，代替$ \bol
 		\label{fig:hp-sketch}
 	\end{small}
 \end{figure}
-
-
-
+更多可技术细节参考\upcite{Patterson-2014-GPOPSIIMATLAB}。
 \section{伪谱法快速可达域计算与分析}
-\section{短航程再入轨迹设计结果对比}
+可达域的计算目的是得到飞船在固定初始状态下，获得其机动包络能力。
+\subsection{纵向航程范围获取}
+最大最小纵程的轨迹设计
+\subsection{可达域方法于计算结果}
+程序测试通过，做出类似这样的图的效果
+\begin{figure}[htb]
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		\includegraphics[width=0.48\textwidth]{footboundary.png}
+		\caption{并排第一个图}
+		\label{fig:parallel1}
+	\end{minipage}\hfill
+	\begin{minipage}{0.48\textwidth}
+		\centering
+		\includegraphics[width=0.48\textwidth]{footboundary2.png}
+		\caption{并排第二个图}
+		\label{fig:parallel2}
+	\end{minipage}
+\end{figure}
 
-\subsection{}
+\section{短航程再入轨迹设计结果对比}
+\subsection{短航程再入解析轨迹设计}
+短航程设计简要介绍？？
+\subsection{结果对比分析}
+分析其中最短航程对应的参数情况，对应返回最为恶劣的情况
