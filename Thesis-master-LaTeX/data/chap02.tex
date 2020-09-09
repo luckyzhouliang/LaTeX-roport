@@ -27,18 +27,18 @@ Adobe中文字体有四种：
 {\kai 正文行距}的列表环境，可以使用compactitem环境，记住这点很重要，不要再
 用那种自己修改\verb|itemsep|的傻傻的办法了。
 \begin{itemize}
-\item[初号] {\song\chuhao 陈赓大将}
-\item[小初] {\song\xiaochu 陈赓大将}
-\item[一号] {\song\yihao 陈赓大将}
-\item[小一] {\song\xiaoyi 陈赓大将}
-\item[二号] {\song\erhao 陈赓大将}
-\item[小二] {\song\xiaoer 陈赓大将}
-\item[三号] {\song\sanhao 陈赓大将}
-\item[小三] {\song\xiaosan 陈赓大将}
-\item[四号] {\song\sihao 陈赓大将}
-\item[小四] {\song\xiaosi 陈赓大将}
-\item[五号] {\song\wuhao 陈赓大将}
-\item[小五] {\song\xiaowu 陈赓大将}
+  \item[初号] {\song\chuhao 陈赓大将}
+  \item[小初] {\song\xiaochu 陈赓大将}
+  \item[一号] {\song\yihao 陈赓大将}
+  \item[小一] {\song\xiaoyi 陈赓大将}
+  \item[二号] {\song\erhao 陈赓大将}
+  \item[小二] {\song\xiaoer 陈赓大将}
+  \item[三号] {\song\sanhao 陈赓大将}
+  \item[小三] {\song\xiaosan 陈赓大将}
+  \item[四号] {\song\sihao 陈赓大将}
+  \item[小四] {\song\xiaosi 陈赓大将}
+  \item[五号] {\song\wuhao 陈赓大将}
+  \item[小五] {\song\xiaowu 陈赓大将}
 \end{itemize}
 
 \section{表格明细}
@@ -52,10 +52,10 @@ Adobe中文字体有四种：
 \begin{table}[htb]
   \centering
   \begin{minipage}[t]{0.8\linewidth} % 如果想在表格中使用脚注，minipage是个不错的办法
-  \caption[模板文件]{模板文件。如果表格的标题很长，那么在表格索引中就会很不美
-    观，所以要像 chapter 那样在前面用中括号写一个简短的标题。这个标题会出现在索
-    引中。}
-  \label{tab:template-files}
+    \caption[模板文件]{模板文件。如果表格的标题很长，那么在表格索引中就会很不美
+      观，所以要像 chapter 那样在前面用中括号写一个简短的标题。这个标题会出现在索
+      引中。}
+    \label{tab:template-files}
     \begin{tabular*}{\linewidth}{lp{10cm}}
       \toprule[1.5pt]
       {\hei 文件名} & {\hei 描述} \\
@@ -84,21 +84,21 @@ rongdonghu提供）的表格，内容需要居中且可以自动调整。
 该命令已添加到\verb|mynudt.sty|中。下面是这种情况的实例：
 
 \begin{table}[htbp]
-\centering
-\begin{minipage}[t]{0.9\linewidth}
-\caption{Reed Solomon码的典型应用}
-\label{tab:RSuse}
-\begin{tabularx}{\linewidth}{cZ}
-\toprule[1.5pt]
-{\hei 应用领域} & {\hei 编码方案}\\
-\midrule[1pt]
-磁盘驱动器 & RS(32,28,5)码 \footnote{码长为32、维数为28、最小距离为5} \\
-CD & 交叉交织RS码(CIRC) \\
-DVD & RS(208,192,17)码、RS(182,172,11)码 \\
-光纤通信 & RS(255,229,17)码 \\
-\bottomrule[1.5pt]
-\end{tabularx}
-\end{minipage}
+  \centering
+  \begin{minipage}[t]{0.9\linewidth}
+    \caption{Reed Solomon码的典型应用}
+    \label{tab:RSuse}
+    \begin{tabularx}{\linewidth}{cZ}
+      \toprule[1.5pt]
+      {\hei 应用领域} & {\hei 编码方案}                                          \\
+      \midrule[1pt]
+      磁盘驱动器      & RS(32,28,5)码 \footnote{码长为32、维数为28、最小距离为5} \\
+      CD              & 交叉交织RS码(CIRC)                                       \\
+      DVD             & RS(208,192,17)码、RS(182,172,11)码                       \\
+      光纤通信        & RS(255,229,17)码                                         \\
+      \bottomrule[1.5pt]
+    \end{tabularx}
+  \end{minipage}
 \end{table}
 
 我们经常会在表格下方标注数据来源，或者对表格里面的条目进行解释。前面的脚注是一种
@@ -108,16 +108,16 @@ DVD & RS(208,192,17)码、RS(182,172,11)码 \\
   \centering
   \caption{复杂表格示例 1}
   \label{tab:tabexamp1}
-  \begin{minipage}[t]{0.8\textwidth} 
+  \begin{minipage}[t]{0.8\textwidth}
     \begin{tabularx}{\linewidth}{|l|X|X|X|X|}
       \hline
-      \multirow{2}*{\backslashbox{x}{y}}  & \multicolumn{2}{c|}{First Half} & \multicolumn{2}{c|}{Second Half}\\
+      \multirow{2}*{\backslashbox{x}{y}} & \multicolumn{2}{c|}{First Half} & \multicolumn{2}{c|}{Second Half}                     \\
       \cline{2-5}
-      & 1st Qtr &2nd Qtr&3rd Qtr&4th Qtr \\ 
+                                         & 1st Qtr                         & 2nd Qtr                          & 3rd Qtr & 4th Qtr \\
       \hline
-      \multirow{2}*{East$^{*}$} &   20.4&   27.4&   90&     20.4 \\
-       &   30.6 &   38.6 &   34.6 &  31.6 \\ 
-      West$^{**}$ &   30.6 &   38.6 &   34.6 &  31.6 \\ 
+      \multirow{2}*{East$^{*}$}          & 20.4                            & 27.4                             & 90      & 20.4    \\
+                                         & 30.6                            & 38.6                             & 34.6    & 31.6    \\
+      West$^{**}$                        & 30.6                            & 38.6                             & 34.6    & 31.6    \\
       \hline
     \end{tabularx}\\[2pt]
     \footnotesize
@@ -127,7 +127,7 @@ DVD & RS(208,192,17)码、RS(182,172,11)码 \\
 \end{table}
 
 此外，表~\ref{tab:tabexamp1} 同时还演示了另外三个功能：1）通过 \textsf{tabularx} 的
- \texttt{|X|} 扩展实现表格内容自动调整；2）通过命令 \verb|\backslashbox| 在表头部分
+\texttt{|X|} 扩展实现表格内容自动调整；2）通过命令 \verb|\backslashbox| 在表头部分
 插入反斜线（WORD中很简单，但\LaTeX{}做表格需要一定的（极大的）想象力）；3）就是
 使用\verb|multirow|和\verb|multicolumn|命令。
 
@@ -136,107 +136,107 @@ DVD & RS(208,192,17)码、RS(182,172,11)码 \\
 上面那个表格就够用啦。
 
 浮动体的并排放置一般有两种情况：1）二者没有关系，为两个独立的浮动体；2）二者隶属
-于同一个浮动体。对表格来说并排表格既可以像表~\ref{tab:parallel1}、表~\ref{tab:parallel2} 
+于同一个浮动体。对表格来说并排表格既可以像表~\ref{tab:parallel1}、表~\ref{tab:parallel2}
 使用小页环境，也可以如表~\ref{tab:subtable}使用子表格来做。
 图与表同出一源，后面我们将讲解子图(subfloat)的例子。
 \begin{table}[htb]
-\centering
-\noindent\begin{minipage}{0.45\textwidth}
-\centering
-\caption{第一个并排子表格}
-\label{tab:parallel1}
-\begin{tabular}{p{2cm}p{2cm}}
-\toprule[1.5pt]
-111 & 222 \\\midrule[1pt]
-222 & 333 \\\bottomrule[1.5pt]
-\end{tabular}
-\end{minipage}
-\begin{minipage}{0.45\textwidth}
-\centering
-\caption{第二个并排子表格}
-\label{tab:parallel2}
-\begin{tabular}{p{2cm}p{2cm}}
-\toprule[1.5pt]
-111 & 222 \\\midrule[1pt]
-222 & 333 \\\bottomrule[1.5pt]
-\end{tabular}
-\end{minipage}
+  \centering
+  \noindent\begin{minipage}{0.45\textwidth}
+    \centering
+    \caption{第一个并排子表格}
+    \label{tab:parallel1}
+    \begin{tabular}{p{2cm}p{2cm}}
+      \toprule[1.5pt]
+      111 & 222 \\\midrule[1pt]
+      222 & 333 \\\bottomrule[1.5pt]
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \caption{第二个并排子表格}
+    \label{tab:parallel2}
+    \begin{tabular}{p{2cm}p{2cm}}
+      \toprule[1.5pt]
+      111 & 222 \\\midrule[1pt]
+      222 & 333 \\\bottomrule[1.5pt]
+    \end{tabular}
+  \end{minipage}
 \end{table}
 \begin{table}[htbp]
-\centering
-\caption{并排子表格}
-\label{tab:subtable}
-\subfloat[第一个子表格]{
-\begin{tabular}{p{2cm}p{2cm}}
-\toprule[1.5pt]
-111 & 222 \\\midrule[1pt]
-222 & 333 \\\bottomrule[1.5pt]
-\end{tabular}}\hskip2cm
-\subfloat[第二个子表格]{
-\begin{tabular}{p{2cm}p{2cm}}
-\toprule[1.5pt]
-111 & 222 \\\midrule[1pt]
-222 & 333 \\\bottomrule[1.5pt]
-\end{tabular}}
+  \centering
+  \caption{并排子表格}
+  \label{tab:subtable}
+  \subfloat[第一个子表格]{
+    \begin{tabular}{p{2cm}p{2cm}}
+      \toprule[1.5pt]
+      111 & 222 \\\midrule[1pt]
+      222 & 333 \\\bottomrule[1.5pt]
+    \end{tabular}}\hskip2cm
+  \subfloat[第二个子表格]{
+    \begin{tabular}{p{2cm}p{2cm}}
+      \toprule[1.5pt]
+      111 & 222 \\\midrule[1pt]
+      222 & 333 \\\bottomrule[1.5pt]
+    \end{tabular}}
 \end{table}
 
 如果您要排版的表格长度超过一页，那么推荐使用\textsf{longtable}命令。
 这里随便敲入一些无关的文字，使得正文看上去不是那么的少。
 表~\ref{tab:performance} 就是 \textsf{longtable} 的简单示例。
 \begin{longtable}[c]{c*{6}{r}}
-\caption{实验数据}\label{tab:performance}\\
-\toprule[1.5pt]
- 测试程序 & \multicolumn{1}{c}{正常运行} & \multicolumn{1}{c}{同步}
-& \multicolumn{1}{c}{检查点}   & \multicolumn{1}{c}{卷回恢复}
-& \multicolumn{1}{c}{进程迁移} & \multicolumn{1}{c}{检查点} 	\\
-& \multicolumn{1}{c}{时间 (s)} & \multicolumn{1}{c}{时间 (s)}
-& \multicolumn{1}{c}{时间 (s)} & \multicolumn{1}{c}{时间 (s)}
-& \multicolumn{1}{c}{时间 (s)} &  文件（KB）			\\
-\midrule[1pt]%
-\endfirsthead%
+  \caption{实验数据}\label{tab:performance}                                                               \\
+  \toprule[1.5pt]
+  测试程序 & \multicolumn{1}{c}{正常运行} & \multicolumn{1}{c}{同步}
+           & \multicolumn{1}{c}{检查点}   & \multicolumn{1}{c}{卷回恢复}
+           & \multicolumn{1}{c}{进程迁移} & \multicolumn{1}{c}{检查点}                                    \\
+           & \multicolumn{1}{c}{时间 (s)} & \multicolumn{1}{c}{时间 (s)}
+           & \multicolumn{1}{c}{时间 (s)} & \multicolumn{1}{c}{时间 (s)}
+           & \multicolumn{1}{c}{时间 (s)} & 文件（KB）                                                    \\
+  \midrule[1pt]%
+  \endfirsthead%
 
-\multicolumn{7}{c}{续表~\thetable\hskip1em 实验数据}\\
+  \multicolumn{7}{c}{续表~\thetable\hskip1em 实验数据}                                                    \\
 
-\toprule[1.5pt]
- 测试程序 & \multicolumn{1}{c}{正常运行} & \multicolumn{1}{c}{同步} 
-& \multicolumn{1}{c}{检查点}   & \multicolumn{1}{c}{卷回恢复}
-& \multicolumn{1}{c}{进程迁移} & \multicolumn{1}{c}{检查点} 	\\
-& \multicolumn{1}{c}{时间 (s)} & \multicolumn{1}{c}{时间 (s)}
-& \multicolumn{1}{c}{时间 (s)} & \multicolumn{1}{c}{时间 (s)}
-& \multicolumn{1}{c}{时间 (s)} &  文件（KB）			\\
-\midrule[1pt]%
-\endhead%
-\hline%
+  \toprule[1.5pt]
+  测试程序 & \multicolumn{1}{c}{正常运行} & \multicolumn{1}{c}{同步}
+           & \multicolumn{1}{c}{检查点}   & \multicolumn{1}{c}{卷回恢复}
+           & \multicolumn{1}{c}{进程迁移} & \multicolumn{1}{c}{检查点}                                    \\
+           & \multicolumn{1}{c}{时间 (s)} & \multicolumn{1}{c}{时间 (s)}
+           & \multicolumn{1}{c}{时间 (s)} & \multicolumn{1}{c}{时间 (s)}
+           & \multicolumn{1}{c}{时间 (s)} & 文件（KB）                                                    \\
+  \midrule[1pt]%
+  \endhead%
+  \hline%
 
-\multicolumn{7}{r}{续下页}%
+  \multicolumn{7}{r}{续下页}%
 
-\endfoot%
-\endlastfoot%
-CG.A.2 & 23.05   & 0.002 & 0.116 & 0.035 & 0.589 & 32491  \\
-CG.A.4 & 15.06   & 0.003 & 0.067 & 0.021 & 0.351 & 18211  \\
-CG.A.8 & 13.38   & 0.004 & 0.072 & 0.023 & 0.210 & 9890   \\
-CG.B.2 & 867.45  & 0.002 & 0.864 & 0.232 & 3.256 & 228562 \\
-CG.B.4 & 501.61  & 0.003 & 0.438 & 0.136 & 2.075 & 123862 \\
-CG.B.8 & 384.65  & 0.004 & 0.457 & 0.108 & 1.235 & 63777  \\
-MG.A.2 & 112.27  & 0.002 & 0.846 & 0.237 & 3.930 & 236473 \\
-MG.A.4 & 59.84   & 0.003 & 0.442 & 0.128 & 2.070 & 123875 \\
-MG.A.8 & 31.38   & 0.003 & 0.476 & 0.114 & 1.041 & 60627  \\
-MG.B.2 & 526.28  & 0.002 & 0.821 & 0.238 & 4.176 & 236635 \\
-MG.B.4 & 280.11  & 0.003 & 0.432 & 0.130 & 1.706 & 123793 \\
-MG.B.8 & 148.29  & 0.003 & 0.442 & 0.116 & 0.893 & 60600  \\
-LU.A.2 & 2116.54 & 0.002 & 0.110 & 0.030 & 0.532 & 28754  \\
-LU.A.4 & 1102.50 & 0.002 & 0.069 & 0.017 & 0.255 & 14915  \\
-LU.A.8 & 574.47  & 0.003 & 0.067 & 0.016 & 0.192 & 8655   \\
-LU.B.2 & 9712.87 & 0.002 & 0.357 & 0.104 & 1.734 & 101975 \\
-LU.B.4 & 4757.80 & 0.003 & 0.190 & 0.056 & 0.808 & 53522  \\
-LU.B.8 & 2444.05 & 0.004 & 0.222 & 0.057 & 0.548 & 30134  \\
-EP.A.2 & 123.81  & 0.002 & 0.010 & 0.003 & 0.074 & 1834   \\
-EP.A.4 & 61.92   & 0.003 & 0.011 & 0.004 & 0.073 & 1743   \\
-EP.A.8 & 31.06   & 0.004 & 0.017 & 0.005 & 0.073 & 1661   \\
-EP.B.2 & 495.49  & 0.001 & 0.009 & 0.003 & 0.196 & 2011   \\
-EP.B.4 & 247.69  & 0.002 & 0.012 & 0.004 & 0.122 & 1663   \\
-EP.B.8 & 126.74  & 0.003 & 0.017 & 0.005 & 0.083 & 1656   \\
-\bottomrule[1.5pt]
+  \endfoot%
+  \endlastfoot%
+  CG.A.2   & 23.05                        & 0.002                        & 0.116 & 0.035 & 0.589 & 32491  \\
+  CG.A.4   & 15.06                        & 0.003                        & 0.067 & 0.021 & 0.351 & 18211  \\
+  CG.A.8   & 13.38                        & 0.004                        & 0.072 & 0.023 & 0.210 & 9890   \\
+  CG.B.2   & 867.45                       & 0.002                        & 0.864 & 0.232 & 3.256 & 228562 \\
+  CG.B.4   & 501.61                       & 0.003                        & 0.438 & 0.136 & 2.075 & 123862 \\
+  CG.B.8   & 384.65                       & 0.004                        & 0.457 & 0.108 & 1.235 & 63777  \\
+  MG.A.2   & 112.27                       & 0.002                        & 0.846 & 0.237 & 3.930 & 236473 \\
+  MG.A.4   & 59.84                        & 0.003                        & 0.442 & 0.128 & 2.070 & 123875 \\
+  MG.A.8   & 31.38                        & 0.003                        & 0.476 & 0.114 & 1.041 & 60627  \\
+  MG.B.2   & 526.28                       & 0.002                        & 0.821 & 0.238 & 4.176 & 236635 \\
+  MG.B.4   & 280.11                       & 0.003                        & 0.432 & 0.130 & 1.706 & 123793 \\
+  MG.B.8   & 148.29                       & 0.003                        & 0.442 & 0.116 & 0.893 & 60600  \\
+  LU.A.2   & 2116.54                      & 0.002                        & 0.110 & 0.030 & 0.532 & 28754  \\
+  LU.A.4   & 1102.50                      & 0.002                        & 0.069 & 0.017 & 0.255 & 14915  \\
+  LU.A.8   & 574.47                       & 0.003                        & 0.067 & 0.016 & 0.192 & 8655   \\
+  LU.B.2   & 9712.87                      & 0.002                        & 0.357 & 0.104 & 1.734 & 101975 \\
+  LU.B.4   & 4757.80                      & 0.003                        & 0.190 & 0.056 & 0.808 & 53522  \\
+  LU.B.8   & 2444.05                      & 0.004                        & 0.222 & 0.057 & 0.548 & 30134  \\
+  EP.A.2   & 123.81                       & 0.002                        & 0.010 & 0.003 & 0.074 & 1834   \\
+  EP.A.4   & 61.92                        & 0.003                        & 0.011 & 0.004 & 0.073 & 1743   \\
+  EP.A.8   & 31.06                        & 0.004                        & 0.017 & 0.005 & 0.073 & 1661   \\
+  EP.B.2   & 495.49                       & 0.001                        & 0.009 & 0.003 & 0.196 & 2011   \\
+  EP.B.4   & 247.69                       & 0.002                        & 0.012 & 0.004 & 0.122 & 1663   \\
+  EP.B.8   & 126.74                       & 0.003                        & 0.017 & 0.005 & 0.083 & 1656   \\
+  \bottomrule[1.5pt]
 \end{longtable}
 
 另外，有的同学不想让某个表格或者图片出现在索引里面，那么请使用命令 \verb|\caption*{}|，
@@ -247,7 +247,7 @@ EP.B.8 & 126.74  & 0.003 & 0.017 & 0.005 & 0.083 & 1656   \\
 
 本模板不再预先装载任何绘图包（如 \textsf{pstricks，pgf} 等），完全由你自己来决定。
 个人觉得 \textsf{pgf} 不错，不依赖于 Postscript。此外还有很多针对 \LaTeX{} 的
- GUI 作图工具，如 XFig(jFig), WinFig, Tpx, Ipe, Dia, Inkscape, LaTeXPiX,
+GUI 作图工具，如 XFig(jFig), WinFig, Tpx, Ipe, Dia, Inkscape, LaTeXPiX,
 jPicEdt 等等。本人强烈推荐\textsf{Ipe}。
 
 一般图形都是处在浮动环境中。之所以称为浮动是指最终排版效果图形的位置不一定与源文
@@ -264,7 +264,7 @@ jPicEdt 等等。本人强烈推荐\textsf{Ipe}。
 \end{figure}
 
 若子图共用一个计数器，
-那么请看图~\ref{fig:big1}，它包含两个小图，分别是图~\ref{fig:subfig1} 
+那么请看图~\ref{fig:big1}，它包含两个小图，分别是图~\ref{fig:subfig1}
 和图~\ref{fig:subfig2}。这里推荐使用\verb|\subfloat|，{\bf 不要再用}
 \verb|\subfigure|和\verb|\subtable|。
 \begin{figure}[htb]
@@ -281,15 +281,15 @@ jPicEdt 等等。本人强烈推荐\textsf{Ipe}。
 
 而下面这个例子显示并排$3\times2$的图片，见图\ref{fig:subfig:3x2}:
 \begin{figure}[htb]
-\centering
-\subfloat[]{\includegraphics[width=.27\textwidth]{typography}} \qquad
-\subfloat[]{\includegraphics[width=.27\textwidth]{typography}} \qquad
-\subfloat[]{\includegraphics[width=.27\textwidth]{typography}} \qquad
-\subfloat[]{\includegraphics[width=.27\textwidth]{typography}} \qquad
-\subfloat[]{\includegraphics[width=.27\textwidth]{typography}} \qquad
-\subfloat[]{\includegraphics[width=.27\textwidth]{typography}}
-\caption{并排图片}
-\label{fig:subfig:3x2}
+  \centering
+  \subfloat[]{\includegraphics[width=.27\textwidth]{typography}} \qquad
+  \subfloat[]{\includegraphics[width=.27\textwidth]{typography}} \qquad
+  \subfloat[]{\includegraphics[width=.27\textwidth]{typography}} \qquad
+  \subfloat[]{\includegraphics[width=.27\textwidth]{typography}} \qquad
+  \subfloat[]{\includegraphics[width=.27\textwidth]{typography}} \qquad
+  \subfloat[]{\includegraphics[width=.27\textwidth]{typography}}
+  \caption{并排图片}
+  \label{fig:subfig:3x2}
 \end{figure}
 
 要注意，图\ref{fig:subfig:3x2}例中
@@ -300,18 +300,18 @@ jPicEdt 等等。本人强烈推荐\textsf{Ipe}。
 图\ref{fig:parallel1}和图\ref{fig:parallel2}。其实这个例子和表格一节中并排
 放置的表格一摸一样。
 \begin{figure}[htb]
-\begin{minipage}{0.48\textwidth}
-  \centering
-  \includegraphics[height=1.2cm]{xhh}
-  \caption{并排第一个图}
-  \label{fig:parallel1}
-\end{minipage}\hfill
-\begin{minipage}{0.48\textwidth}
-  \centering
-  \includegraphics[height=1.2cm]{xhh}
-  \caption{并排第二个图}
-  \label{fig:parallel2}
-\end{minipage}
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[height=1.2cm]{xhh}
+    \caption{并排第一个图}
+    \label{fig:parallel1}
+  \end{minipage}\hfill
+  \begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[height=1.2cm]{xhh}
+    \caption{并排第二个图}
+    \label{fig:parallel2}
+  \end{minipage}
 \end{figure}
 
 图形就说这么多，因为大家在写论文是遇到的最大问题不是怎么把图插进去，
@@ -326,38 +326,38 @@ jPicEdt 等等。本人强烈推荐\textsf{Ipe}。
 $p(\mathbf{x})$为先验；分母$p(\mathbf{x})$ 为归一化因子，这是
 实际应用中十分恐怖的一个积分式。
 \begin{equation}
-\label{equ:chap1:bayes}
-p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
-\frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})} 
+  \label{equ:chap1:bayes}
+  p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
+  \frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})}
 \end{equation}
 
 论文里面公式越多，\TeX{} 就越 happy。再看一个 \textsf{amsmath} 的例子：
-\newcommand{\envert}[1]{\left\lvert#1\right\rvert} 
+\newcommand{\envert}[1]{\left\lvert#1\right\rvert}
 \begin{equation}\label{detK2}
-\det\mathbf{K}(t=1,t_1,\dots,t_n)=\sum_{I\in\mathbf{n}}(-1)^{\envert{I}}
-\prod_{i\in I}t_i\prod_{j\in I}(D_j+\lambda_jt_j)\det\mathbf{A}
-^{(\lambda)}(\overline{I}|\overline{I})=0.
-\end{equation} 
+  \det\mathbf{K}(t=1,t_1,\dots,t_n)=\sum_{I\in\mathbf{n}}(-1)^{\envert{I}}
+  \prod_{i\in I}t_i\prod_{j\in I}(D_j+\lambda_jt_j)\det\mathbf{A}
+  ^{(\lambda)}(\overline{I}|\overline{I})=0.
+\end{equation}
 
 大家在写公式的时候一定要好好看\textsf{amsmath}的文档，并参考模板中的用法：
 \begin{multline*}%\tag{[b]} % 这个出现在索引中的
-\int_a^b\biggl\{\int_a^b[f(x)^2g(y)^2+f(y)^2g(x)^2]
- -2f(x)g(x)f(y)g(y)\,dx\biggr\}\,dy \\
- =\int_a^b\biggl\{g(y)^2\int_a^bf^2+f(y)^2
+  \int_a^b\biggl\{\int_a^b[f(x)^2g(y)^2+f(y)^2g(x)^2]
+  -2f(x)g(x)f(y)g(y)\,dx\biggr\}\,dy \\
+  =\int_a^b\biggl\{g(y)^2\int_a^bf^2+f(y)^2
   \int_a^b g^2-2f(y)g(y)\int_a^b fg\biggr\}\,dy
 \end{multline*}
 
 再看\ref{equ:split}:
 \begin{equation}\label{equ:split}
-\begin{split}
-C(z) &= [z^n] \biggl[\frac{e^{3/4}}{\sqrt{1-z}} +
-e^{-3/4}(1-z)^{1/2} + \frac{e^{-3/4}}{4}(1-z)^{3/2}
-+ O\Bigl( (1-z)^{5/2}\Bigr)\biggr] \\
-&= \frac{e^{-3/4}}{\sqrt{\pi n}} - \frac{5e^{-3/4}}{8\sqrt{\pi
-n^3}} + \frac{e^{-3/4}}{128 \sqrt{\pi n^5}} +
-O\biggl(\frac{1}{\sqrt{\pi
-n^7}}\biggr)
-\end{split}
+  \begin{split}
+    C(z) &= [z^n] \biggl[\frac{e^{3/4}}{\sqrt{1-z}} +
+      e^{-3/4}(1-z)^{1/2} + \frac{e^{-3/4}}{4}(1-z)^{3/2}
+      + O\Bigl( (1-z)^{5/2}\Bigr)\biggr] \\
+    &= \frac{e^{-3/4}}{\sqrt{\pi n}} - \frac{5e^{-3/4}}{8\sqrt{\pi
+        n^3}} + \frac{e^{-3/4}}{128 \sqrt{\pi n^5}} +
+    O\biggl(\frac{1}{\sqrt{\pi
+        n^7}}\biggr)
+  \end{split}
 \end{equation}
 
 当然了，数学中必不可少的是定理和证明：
@@ -365,10 +365,10 @@ n^7}}\biggr)
   \label{chapTSthm:rayleigh solution}
   假定 $X$ 的二阶矩存在:
   \begin{equation}
-         O_R(\mathbf{x},F)=\sqrt{\frac{\mathbf{u}_1^T\mathbf{A}\mathbf{u}_1} {\mathbf{u}_1^T\mathbf{B}\mathbf{u}_1}}=\sqrt{\lambda_1},
+    O_R(\mathbf{x},F)=\sqrt{\frac{\mathbf{u}_1^T\mathbf{A}\mathbf{u}_1} {\mathbf{u}_1^T\mathbf{B}\mathbf{u}_1}}=\sqrt{\lambda_1},
   \end{equation}
   其中 $\mathbf{A}$ 等于 $(\mathbf{x}-EX)(\mathbf{x}-EX)^T$，$\mathbf{B}$ 表示协方差阵 $E(X-EX)(X-EX)^T$，$\lambda_1$
-$\mathbf{u}_1$是$\lambda_1$对应的特征向量，
+  $\mathbf{u}_1$是$\lambda_1$对应的特征向量，
 \end{theorem}
 
 对于希腊符号使用\verb|mathbf|命令可能有些问题，所以建议对符号
@@ -382,15 +382,15 @@ $\mathbf{u}_1$是$\lambda_1$对应的特征向量，
 完整测试如下$\omega,\bm{\omega},\upomega,\bm{\upomega},\Omega,\bm{\Omega},\varOmega,\bm{\varOmega}$。
 
 \begin{proof}
-上述优化问题显然是一个Rayleigh商问题。我们有
+  上述优化问题显然是一个Rayleigh商问题。我们有
   \begin{align}
-     O_R(\mathbf{x},F)=\sqrt{\frac{\mathbf{u}_1^T\mathbf{A}\mathbf{u}_1} {\mathbf{u}_1^T\mathbf{B}\mathbf{u}_1}}=\sqrt{\lambda_1},
- \end{align}
- 其中 $\lambda_1$ 下列广义特征值问题的最大特征值：
-$$
-\mathbf{A}\mathbf{z}=\lambda\mathbf{B}\mathbf{z}, \mathbf{z}\neq 0.
-$$
- $\mathbf{u}_1$ 是 $\lambda_1$对应的特征向量。结论成立。
+    O_R(\mathbf{x},F)=\sqrt{\frac{\mathbf{u}_1^T\mathbf{A}\mathbf{u}_1} {\mathbf{u}_1^T\mathbf{B}\mathbf{u}_1}}=\sqrt{\lambda_1},
+  \end{align}
+  其中 $\lambda_1$ 下列广义特征值问题的最大特征值：
+  $$
+    \mathbf{A}\mathbf{z}=\lambda\mathbf{B}\mathbf{z}, \mathbf{z}\neq 0.
+  $$
+  $\mathbf{u}_1$ 是 $\lambda_1$对应的特征向量。结论成立。
 \end{proof}
 
 下面来看看算法环境的定义和使用。
@@ -506,30 +506,30 @@ print "Hello, world!\n";
 调用的是fancyvbr宏包，用户可在mynudt.sty中修改它的外观等等。
 这里我们还可以给代码加上标签。
 \begin{code}[label=hello.c]
-public class HelloWorld {
-   public static void main(String[] args) {
-      System.out.println("Hello World!");
-   }
-}   // 世界，你好！
+  public class HelloWorld {
+      public static void main(String[] args) {
+          System.out.println("Hello World!");
+        }
+    }   // 世界，你好！
 \end{code}
 
 \section{符号列表}
 
-{\hei 前面的话：}{\kai\color{blue} 
-2.2版本后默认使用nomencl环境，如果你还是希望使用传统的\verb|definition.tex|，那么只需注释掉
-顶层文件中的nomenclature即可。}
+ {\hei 前面的话：}{\kai\color{blue}
+  2.2版本后默认使用nomencl环境，如果你还是希望使用传统的\verb|definition.tex|，那么只需注释掉
+  顶层文件中的nomenclature即可。}
 
 符号列表使用的是\verb|nomencl|包，自己简单定制了下，使用方法分为四步：
 \begin{compactenum}
-\item 将\verb|\makenomenclature|语句放在正文前，即\verb|\begin{document}|前面；
-\item 将\verb|\printnomenclature|放在论文中，我在例子中将符号列表放在了英文摘要的
-后面，正文第一章的前面，当然，你可以根据自己的需要或者教研室的规范放置在合理的位置上，
-为了页面引用的正确，在这句话前面放上\verb|\cleardoublepage|；
-\item 使用\verb|\nomenclature|命令在论文的各个位置上添加符号定义，语法后面会讲到；
-\item 编译。编译需要首先运行一遍xelatex，之后运行
-\begin{code}
-makeindex -s nomencl.ist -o thesis.nls thesis.nlo
-\end{code}
+  \item 将\verb|\makenomenclature|语句放在正文前，即\verb|\begin{document}|前面；
+  \item 将\verb|\printnomenclature|放在论文中，我在例子中将符号列表放在了英文摘要的
+  后面，正文第一章的前面，当然，你可以根据自己的需要或者教研室的规范放置在合理的位置上，
+  为了页面引用的正确，在这句话前面放上\verb|\cleardoublepage|；
+  \item 使用\verb|\nomenclature|命令在论文的各个位置上添加符号定义，语法后面会讲到；
+  \item 编译。编译需要首先运行一遍xelatex，之后运行
+  \begin{code}
+    makeindex -s nomencl.ist -o thesis.nls thesis.nlo
+  \end{code}
 \end{compactenum}
 
 你可以把这句编译命令放在\verb|makepdf.bat|中第一个\verb|xelatex thesis|下面。然后
@@ -541,16 +541,16 @@ nomencl环境，只要把它注释掉（前面加\verb|rem|）就可以。
 下面简单说明下\verb|\nomenclature|命令，语法为。这里插入一些随机的文字，希望
 对你在阅读帮助中的思维没有什么不良的影响。
 \begin{code}
-\nomenclature[<prefix>]{<symbol>}{<desc>}{<null>}
+  \nomenclature[<prefix>]{<symbol>}{<desc>}{<null>}
 \end{code}
 \verb|nomencl|模板的默认排序方法可能（大多都）不满足要求，
 论文模板里，我们通过设定\verb|<prefix>|来实现符号列表的排序。
 它分为两部分，比如如\verb|[Aa]|，第一个字母的含义是：
 \begin{compactitem}
-\item[`A'] 符号归为拉丁字母
-\item[`G'] 希腊字母
-\item[`X'] 上标
-\item[`Z'] 下标
+  \item[`A'] 符号归为拉丁字母
+  \item[`G'] 希腊字母
+  \item[`X'] 上标
+  \item[`Z'] 下标
 \end{compactitem}
 每个标识后边的字幕\verb|a-z|作为当前符号组内的排列顺序，比如$\beta$就可以写成
 \verb|[Gb]|，诸如此类。当然你一定注意到了，这个排序分组的设定只是为了记忆
@@ -560,7 +560,7 @@ R是Roman什么的，只要统一就好，只需记住，组间排列是按字�
 注意符号表分四列，前三列的含义与命令中相同，
 最后一列是符号定义时所在的页码。效果看例子，对于下式:
 \begin{equation}\label{eq:heatflux}
-   \dot{Q} = k \cdot A \cdot \Delta T
+  \dot{Q} = k \cdot A \cdot \Delta T
 \end{equation}%
 \nomenclature[Aq]{$\dot{Q}$}{heat flux}{}%
 \nomenclature[Ak]{$k$}{overall heat transfer coefficient,式\eqref{eq:ohtc}}{}%
@@ -572,10 +572,10 @@ R是Roman什么的，只要统一就好，只需记住，组间排列是按字�
 
 或者:
 \begin{equation}\label{eq:ohtc}
-    \frac{1}{k} = \left[\frac{1}{\alpha _{\mathrm{i}}\,r_{\mathrm{i}}} +
-    \sum^n_{j=1}\frac{1}{\lambda _j}\,
-    \ln \frac{r_{\mathrm{a},j}}{r_{\mathrm{i},j}} +
-    \frac{1}{\alpha _{\mathrm{a}}\,
+  \frac{1}{k} = \left[\frac{1}{\alpha _{\mathrm{i}}\,r_{\mathrm{i}}} +
+  \sum^n_{j=1}\frac{1}{\lambda _j}\,
+  \ln \frac{r_{\mathrm{a},j}}{r_{\mathrm{i},j}} +
+  \frac{1}{\alpha _{\mathrm{a}}\,
     r_{\mathrm{a}}}\right] \cdot r_{\mathrm{reference}}
 \end{equation}%
 \nomenclature[Ga]{$\alpha$}{convection heat transfer coefficient}{}%
@@ -586,18 +586,18 @@ R是Roman什么的，只要统一就好，只需记住，组间排列是按字�
 \nomenclature[Zj]{$j$}{running parameter}{}%
 
 {\hei 注意事项：}{\kai 模板中定制的nomencl格式在mynudt.sty中，默认是三栏的，分别是：
-``符号''，``定义''，``首次出现页码''，
-注意这里的符号列表都没有单位，如果你需要额外的栏输入单位（呵呵，聪明的读者可能看出来
-了，\verb|nomenclature|命令最后一个是空的，就是用来让你赋予她各种意义的）。
-此时就需要你有一点点动手能力了（其实只要会修改表格就行），
-方法很简单，比如需要添加``国际单位制''这一栏，则
-\begin{compactenum}
-\item 论文中\verb|\nomenclature|命令的第三个参数就让他代表单位，也可留空；
-\item 将\verb|mynudt.sty|中longtable的表头添加``国际单位制''几个字，
-你也可以取其他的名字，放在那个{\kai 应该出现的}位置上；
-\item 由于增加了5个字，就把前面栏的宽度数字减5，同时设定第三栏宽度为5，
-注意这一步需要你自己调整，记得不要让表格超出边界就行。
-\end{compactenum}
+  ``符号''，``定义''，``首次出现页码''，
+  注意这里的符号列表都没有单位，如果你需要额外的栏输入单位（呵呵，聪明的读者可能看出来
+  了，\verb|nomenclature|命令最后一个是空的，就是用来让你赋予她各种意义的）。
+  此时就需要你有一点点动手能力了（其实只要会修改表格就行），
+  方法很简单，比如需要添加``国际单位制''这一栏，则
+  \begin{compactenum}
+    \item 论文中\verb|\nomenclature|命令的第三个参数就让他代表单位，也可留空；
+    \item 将\verb|mynudt.sty|中longtable的表头添加``国际单位制''几个字，
+    你也可以取其他的名字，放在那个{\kai 应该出现的}位置上；
+    \item 由于增加了5个字，就把前面栏的宽度数字减5，同时设定第三栏宽度为5，
+    注意这一步需要你自己调整，记得不要让表格超出边界就行。
+  \end{compactenum}
 }
 
 \section{中文习惯}
